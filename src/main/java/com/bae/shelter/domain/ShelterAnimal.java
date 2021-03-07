@@ -100,4 +100,5 @@ public class ShelterAnimal {
 	public void setAnimalId(int animalId) {
 		this.animalId = animalId;
 	}
+
 }
