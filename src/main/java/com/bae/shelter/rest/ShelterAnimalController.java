@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bae.shelter.domain.ShelterAnimal;
 import com.bae.shelter.service.shelter.ShelterAnimalService;
 
+
 @RestController
 public class ShelterAnimalController {
 	private ShelterAnimalService service;
@@ -56,4 +57,5 @@ public class ShelterAnimalController {
 	public ShelterAnimal updateShelterAnimal(@PathVariable int animalId, @RequestBody ShelterAnimal newShelterAnimal) {
 		return this.service.updateShelterAnimal(animalId, newShelterAnimal);
 	}
+
 }
