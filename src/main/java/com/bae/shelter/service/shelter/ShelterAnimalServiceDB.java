@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.bae.shelter.domain.ShelterAnimal;
+import com.bae.shelter.repo.ShelterAnimalRepo;
 
 @Service
 public class ShelterAnimalServiceDB {
@@ -46,7 +47,7 @@ public class ShelterAnimalServiceDB {
 	}
 
 	@Override
-	public ShelterAnimal updateShelterAnimal(int animalId, Shelteranimal newShelteranimal) {
+	public ShelterAnimal updateShelterAnimal(int animalId, ShelterAnimal newShelteranimal) {
 		Optional<ShelterAnimal> optionalShelterAnimal = this.repo.findById(animalId);
 		ShelterAnimal existing = optionalShelterAnimal.get();
 
