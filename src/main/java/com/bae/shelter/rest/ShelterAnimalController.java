@@ -2,6 +2,7 @@ package com.bae.shelter.rest;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,10 +13,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bae.shelter.domain.ShelterAnimal;
+import com.bae.shelter.service.shelter.ShelterAnimalService;
+
 
 @RestController
 public class ShelterAnimalController {
 	private ShelterAnimalService service;
+	private Object shelterAnimal;
 
 	public ShelterAnimalController(ShelterAnimalService service) {
 		super();
@@ -24,7 +28,9 @@ public class ShelterAnimalController {
 
 	@PostMapping("/createShelter")
 	public ResponseEntity<ShelterAnimal> createShelterAnimal(@RequestBody ShelterAnimal shelterAnimal) {
-		return new ResponseEntity<ShelterAnimal>(this.service.createShelterAnimal(shelterAnimal));
+		this.shelterAnimal.add(shelterAnimal);
+		ShelterAnimal added = this.shelterAnimal.get(this.shelterAnimal.size() - 1);
+		return new ResponseEntity<ShelterAnimal>(added, HttpStatus.CREATED);
 	}
 
 	@GetMapping("/getShelterAnimal")
