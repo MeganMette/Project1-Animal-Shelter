@@ -9,7 +9,7 @@ import com.bae.shelter.domain.ShelterAnimal;
 import com.bae.shelter.repo.ShelterAnimalRepo;
 
 @Service
-public class ShelterAnimalServiceDB {
+public class ShelterAnimalServiceDB implements ShelterAnimalService {
 
 	private ShelterAnimalRepo repo;
 
@@ -30,8 +30,8 @@ public class ShelterAnimalServiceDB {
 	}
 
 	@Override
-	public ShelterAnimal getShelterAnimalById(int animalId) {
-		Optional<ShelterAnimal> optShelterAnimal = this.repo.fndById(animalId);
+	public ShelterAnimal getShelterAnimalById(Long animalId) {
+		Optional<ShelterAnimal> optShelterAnimal = this.repo.findById(animalId);
 		return optShelterAnimal.get();
 	}
 
@@ -41,13 +41,14 @@ public class ShelterAnimalServiceDB {
 	}
 
 	@Override
-	public boolean removeAnimalShelter(int animalId) {
+	public boolean removeAnimalShelter(Long animalId) {
 		this.repo.deleteById(animalId);
-		return !this.repo.existsById(animalId);
+		boolean exists = this.repo.existsById(animalId);
+		return !exists;
 	}
 
 	@Override
-	public ShelterAnimal updateShelterAnimal(int animalId, ShelterAnimal newShelteranimal) {
+	public ShelterAnimal updateShelterAnimal(Long animalId, ShelterAnimal newShelteranimal) {
 		Optional<ShelterAnimal> optionalShelterAnimal = this.repo.findById(animalId);
 		ShelterAnimal existing = optionalShelterAnimal.get();
 
@@ -64,4 +65,17 @@ public class ShelterAnimalServiceDB {
 		return updated;
 
 	}
+
+	@Override
+	public boolean removeShelterAnimal(Long animalId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public ShelterAnimal findByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
