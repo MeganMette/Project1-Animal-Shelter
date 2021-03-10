@@ -15,11 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bae.shelter.domain.ShelterAnimal;
 import com.bae.shelter.service.shelter.ShelterAnimalService;
 
-
 @RestController
 public class ShelterAnimalController {
 	private ShelterAnimalService service;
-	private Object shelterAnimal;
 
 	public ShelterAnimalController(ShelterAnimalService service) {
 		super();
@@ -28,8 +26,7 @@ public class ShelterAnimalController {
 
 	@PostMapping("/createShelter")
 	public ResponseEntity<ShelterAnimal> createShelterAnimal(@RequestBody ShelterAnimal shelterAnimal) {
-		this.shelterAnimal.add(shelterAnimal);
-		ShelterAnimal added = this.shelterAnimal.get(this.shelterAnimal.size() - 1);
+		ShelterAnimal added = this.service.createShelterAnimal(shelterAnimal);
 		return new ResponseEntity<ShelterAnimal>(added, HttpStatus.CREATED);
 	}
 
@@ -39,7 +36,7 @@ public class ShelterAnimalController {
 	}
 
 	@GetMapping("/getShetlterAnimalById/{id}")
-	public ShelterAnimal getShelterAnimalById(@PathVariable int animalId) {
+	public ShelterAnimal getShelterAnimalById(@PathVariable Long animalId) {
 		return this.service.getShelterAnimalById(animalId);
 	}
 
@@ -49,12 +46,12 @@ public class ShelterAnimalController {
 	}
 
 	@DeleteMapping("/removeShelterAnimal/{id}")
-	public boolean removeShelterAnimal(@PathVariable int animalId) {
+	public boolean removeShelterAnimal(@PathVariable Long animalId) {
 		return this.service.removeShelterAnimal(animalId);
 	}
 
 	@PutMapping("/updateShelterAnimal/{id}")
-	public ShelterAnimal updateShelterAnimal(@PathVariable int animalId, @RequestBody ShelterAnimal newShelterAnimal) {
+	public ShelterAnimal updateShelterAnimal(@PathVariable Long animalId, @RequestBody ShelterAnimal newShelterAnimal) {
 		return this.service.updateShelterAnimal(animalId, newShelterAnimal);
 	}
 

@@ -1,9 +1,6 @@
 package com.bae.shelter.service.test;
 
-import org.springframework.stereotype.Service;
-
-@Service
-public class MediumResponseService {
+public class MediumResponseService implements ResponseService {
 
 	@Override
 	public String generateResponse() {
