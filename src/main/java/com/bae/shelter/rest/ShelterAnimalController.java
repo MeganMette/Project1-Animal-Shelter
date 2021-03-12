@@ -2,7 +2,6 @@ package com.bae.shelter.rest;
 
 import java.util.List;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,6 +18,7 @@ import com.bae.shelter.service.shelter.ShelterAnimalService;
 @RestController
 @CrossOrigin
 public class ShelterAnimalController {
+
 	private ShelterAnimalService service;
 
 	public ShelterAnimalController(ShelterAnimalService service) {
@@ -26,10 +26,9 @@ public class ShelterAnimalController {
 		this.service = service;
 	}
 
-	@PostMapping("/createShelter")
-	public ResponseEntity<ShelterAnimal> createShelterAnimal(@RequestBody ShelterAnimal shelterAnimal) {
-		ShelterAnimal added = this.service.createShelterAnimal(shelterAnimal);
-		return new ResponseEntity<ShelterAnimal>(added, HttpStatus.CREATED);
+	@PostMapping("/createShelterAnimal")
+	public ShelterAnimal addShlterAnimal(@RequestBody ShelterAnimal shelterAnimal) {
+		return this.service.createShelterAnimal(shelterAnimal);
 	}
 
 	@GetMapping("/getShelterAnimal")
@@ -58,8 +57,8 @@ public class ShelterAnimalController {
 	}
 
 	@PutMapping("/updateShelterAnimal/{id}")
-	public ShelterAnimal updateShelterAnimal(@PathVariable Long animalId, @RequestBody ShelterAnimal newShelterAnimal) {
-		return this.service.updateShelterAnimal(animalId, newShelterAnimal);
+	public ShelterAnimal updateShelterAnimal(@PathVariable Long animalId, @RequestBody ShelterAnimal ShelterAnimal) {
+		return this.service.updateShelterAnimal(animalId, ShelterAnimal);
 	}
 
 }

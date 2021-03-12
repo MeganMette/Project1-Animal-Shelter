@@ -46,6 +46,10 @@ public class ShelterAnimal {
 		this.additionalInformation = additionalInformation;
 	}
 
+	public ShelterAnimal() {
+
+	}
+
 	public String getAnimalType() {
 		return animalType;
 	}

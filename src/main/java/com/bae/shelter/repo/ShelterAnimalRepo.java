@@ -10,4 +10,6 @@ public interface ShelterAnimalRepo extends JpaRepository<ShelterAnimal, Long> {
 
 	ShelterAnimal findByName(String name);
 
+	ShelterAnimal findByAnimalType(String animalType);
+
 }
