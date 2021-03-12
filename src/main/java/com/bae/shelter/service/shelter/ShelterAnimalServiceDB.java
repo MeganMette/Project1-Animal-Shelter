@@ -20,8 +20,7 @@ public class ShelterAnimalServiceDB implements ShelterAnimalService {
 
 	@Override
 	public ShelterAnimal createShelterAnimal(ShelterAnimal shelterAnimal) {
-		ShelterAnimal saved = this.repo.save(shelterAnimal);
-		return saved;
+		return this.repo.save(shelterAnimal);
 	}
 
 	@Override
@@ -41,6 +40,11 @@ public class ShelterAnimalServiceDB implements ShelterAnimalService {
 	}
 
 	@Override
+	public ShelterAnimal getShelterAnimalByType(String animalType) {
+		return this.repo.findByAnimalType(animalType);
+	}
+
+	@Override
 	public boolean removeAnimalShelter(Long animalId) {
 		this.repo.deleteById(animalId);
 		boolean exists = this.repo.existsById(animalId);
@@ -49,8 +53,9 @@ public class ShelterAnimalServiceDB implements ShelterAnimalService {
 
 	@Override
 	public ShelterAnimal updateShelterAnimal(Long animalId, ShelterAnimal newShelteranimal) {
-		Optional<ShelterAnimal> optionalShelterAnimal = this.repo.findById(animalId);
-		ShelterAnimal existing = optionalShelterAnimal.get();
+
+		Optional<ShelterAnimal> existingOptional = this.repo.findById(animalId);
+		ShelterAnimal existing = existingOptional.get();
 
 		existing.setAnimalType(newShelteranimal.getAnimalType());
 		existing.setName(newShelteranimal.getName());
@@ -61,9 +66,7 @@ public class ShelterAnimalServiceDB implements ShelterAnimalService {
 		existing.setLocation(newShelteranimal.getLocation());
 		existing.setAdditionalInformation(newShelteranimal.getAdditionalInformation());
 
-		ShelterAnimal updated = this.repo.save(existing);
-		return updated;
-
+		return this.repo.save(existing);
 	}
 
 	@Override
