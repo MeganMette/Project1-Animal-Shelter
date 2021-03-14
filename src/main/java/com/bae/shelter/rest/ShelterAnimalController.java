@@ -51,7 +51,7 @@ public class ShelterAnimalController {
 		return this.service.getShelterAnimalByType(animalType);
 	}
 
-	@DeleteMapping("/removeShelterAnimal/{id}")
+	@DeleteMapping("/removeShelterAnimal/{animalId}")
 	public boolean removeShelterAnimal(@PathVariable Long animalId) {
 		return this.service.removeShelterAnimal(animalId);
 	}

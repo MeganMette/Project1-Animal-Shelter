@@ -1,1 +1,0 @@
-INSERT INTO `shelterAnimal` (`animalType`, `name`, `age`, `breed`, `gender`, `size`, `location`, `additionalInformation`) VALUES (`Dog`, `Archie`, 4, `Cockapoo`, `male`, `medium`, `East Riding Of Yorkshire`, `no additional information`)

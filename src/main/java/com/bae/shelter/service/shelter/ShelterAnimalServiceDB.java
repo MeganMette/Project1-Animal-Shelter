@@ -45,13 +45,6 @@ public class ShelterAnimalServiceDB implements ShelterAnimalService {
 	}
 
 	@Override
-	public boolean removeAnimalShelter(Long animalId) {
-		this.repo.deleteById(animalId);
-		boolean exists = this.repo.existsById(animalId);
-		return !exists;
-	}
-
-	@Override
 	public ShelterAnimal updateShelterAnimal(Long animalId, ShelterAnimal newShelteranimal) {
 
 		Optional<ShelterAnimal> existingOptional = this.repo.findById(animalId);
@@ -71,8 +64,10 @@ public class ShelterAnimalServiceDB implements ShelterAnimalService {
 
 	@Override
 	public boolean removeShelterAnimal(Long animalId) {
-		// TODO Auto-generated method stub
-		return false;
+		this.repo.deleteById(animalId);
+		System.out.println("HELLO");
+		boolean exists = this.repo.existsById(animalId);
+		return !exists;
 	}
 
 	@Override
