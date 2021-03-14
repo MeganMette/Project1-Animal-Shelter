@@ -82,6 +82,6 @@ public class ShelterAnimalServiceDBUnitTest {
 
 		Mockito.when(this.repo.existsById(animalId)).thenReturn(false);
 
-		assertThat(this.service.removeAnimalShelter(animalId)).isEqualTo(true);
+		assertThat(this.service.removeShelterAnimal(animalId)).isEqualTo(true);
 	}
 }
