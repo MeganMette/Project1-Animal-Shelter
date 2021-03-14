@@ -19,8 +19,6 @@ public interface ShelterAnimalService {
 
 	ShelterAnimal findByName(String name);
 
-	boolean removeAnimalShelter(Long animalId);
-
 	ShelterAnimal getShelterAnimalByType(String animalType);
 
 }
